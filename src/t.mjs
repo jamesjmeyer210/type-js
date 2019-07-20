@@ -25,6 +25,11 @@ const isType = (type, value) => {
     return undefined;
   }
 }
+
+const val = (type, value) => {
+  const evaluate = isType(type, value);
+  return evaluate === true ? value : evaluate;
+}
 // const T = (obj) => { return Object.keys(obj).toString(); }
 //
 // const typesEq = (a , b) => { return T(a) == T(b); }
@@ -39,4 +44,4 @@ const isType = (type, value) => {
 //   return typeof(t) === "string" && typeof(v) === "object" ? {t: t,val: v} : undefined;
 // }
 
-export {typedef, isType};
+export {typedef, isType, val};
