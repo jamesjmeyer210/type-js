@@ -13,6 +13,18 @@ const typedef = (type, def) => {
     return undefined;
   }
 }
+
+const isType = (type, value) => {
+  if(typeof(type) == "string" && typeof(value) == "object"){
+    if(_types.has(type)){
+      return _types.get(type) == Object.keys(value).toString();
+    }else{
+      return undefined;
+    }
+  }else{
+    return undefined;
+  }
+}
 // const T = (obj) => { return Object.keys(obj).toString(); }
 //
 // const typesEq = (a , b) => { return T(a) == T(b); }
@@ -27,4 +39,4 @@ const typedef = (type, def) => {
 //   return typeof(t) === "string" && typeof(v) === "object" ? {t: t,val: v} : undefined;
 // }
 
-export {typedef};
+export {typedef, isType};
