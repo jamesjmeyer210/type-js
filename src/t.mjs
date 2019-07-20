@@ -8,7 +8,7 @@ const typedef = (type, def) => {
   return false;
 }
 
-const isType = (type, value) => {
+const typeis = (type, value) => {
   if(typeof(type) == "string" && _types.has(type)){
     const proof = _types.get(type);
     return proof(value);
@@ -18,8 +18,8 @@ const isType = (type, value) => {
 }
 
 const val = (type, value) => {
-  const evaluate = isType(type, value);
+  const evaluate = typeis(type, value);
   return evaluate === true ? value : evaluate;
 }
 
-export {typedef, isType, val};
+export {typedef, typeis, val};

@@ -1,4 +1,4 @@
-import { typedef, isType, val } from './t.mjs';
+import { typedef, typeis, val } from './t.mjs';
 
 /*
 typedef(...) Tests
@@ -32,15 +32,15 @@ console.assert(typedef('Rectangle', (x) => {
 /*
 isType(...) Tests
 */
-console.assert(isType !== undefined);
+console.assert(typeis !== undefined);
 
-console.assert(isType('number', 1));
+console.assert(typeis('number', 1));
 
-console.assert(isType('u32', 2) === undefined);
+console.assert(typeis('u32', 2) === undefined);
 
-console.assert(isType('u8', -1) === false);
+console.assert(typeis('u8', -1) === false);
 
-console.assert(isType('Rectangle', {length: 1, width: 2}));
+console.assert(typeis('Rectangle', {length: 1, width: 2}));
 
 /*
 val(...) Tests
