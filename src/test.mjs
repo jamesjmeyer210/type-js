@@ -1,4 +1,17 @@
-import { typedef, typeis, val } from './t.mjs';
+import { TypeJs, typedef, typeis, val } from './t.mjs';
+
+/*
+* TypeJs module tests
+* */
+const tjs = TypeJs.from();
+
+console.assert(typeof(tjs) === 'object');
+
+Object.values(tjs).forEach((val) => {
+    console.assert(typeof(val) === 'function');
+});
+
+console.assert(Object.isFrozen(tjs));
 
 /*
 typedef(...) Tests

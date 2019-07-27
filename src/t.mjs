@@ -1,4 +1,4 @@
-let _types = undefined;
+let _types = new Map();
 
 const typedef = (type, def) => {
   if(typeof(type) == 'string' && typeof(def) == 'function' && !_types.has(type)){
@@ -37,11 +37,10 @@ let __TYPES_JS__ = {
 // map - ie. the singleton pattern
 const TypeJs = {
   from: () => {
-    if(_types !== undefined){
-      _types = new Map();
-      __TYPES_JS__.def = typedef();
-      __TYPES_JS__.is = typeis();
-      __TYPES_JS__.val = val();
+    if(!Object.isFrozen(__TYPES_JS__)){
+      __TYPES_JS__.def = typedef;
+      __TYPES_JS__.is = typeis;
+      __TYPES_JS__.val = val;
       Object.freeze(__TYPES_JS__);
       return __TYPES_JS__;
     }else{
@@ -90,4 +89,4 @@ typedef('i32', (x) => {
   return Number.isInteger(x) && x > -2147483648 && x < 2147483648;
 });
 
-export {TypeJs};
+export {TypeJs, typedef, typeis, val};
