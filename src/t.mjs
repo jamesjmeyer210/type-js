@@ -1,12 +1,17 @@
 let _types = new Map();
 
+const __TYPES__ = {
+  get: (index) => { return typeis('number', s) ? _types.get(index) : undefined },
+  len: _ => {return _types.length },
+};
+
 const typedef = (type, def) => {
   if(typeof(type) == 'string' && typeof(def) == 'function' && !_types.has(type)){
     _types.set(type, def);
     return true;
   }
   return false;
-}
+};
 
 /* Simple types built into Javascript */
 typedef('undefined', (x) => { return typeof(x) == 'undefined'; });
@@ -60,6 +65,10 @@ typedef('i32', (x) => {
 const val = (type, value) => {
   const evaluate = typeis(type, value);
   return evaluate === true ? value : evaluate;
+};
+
+const def = (type) => {
+  return _types.get(type);
 };
 
 export {typedef, typeis, val};

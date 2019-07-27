@@ -11,10 +11,15 @@ console.assert(!typedef('u32', {}));
 
 console.assert(!typedef('number', 1));
 
+// console.assert(typedef('Rectangle', (x) => {
+//   return typeof(x) == 'object' &&
+//     typeof(x.length) == 'number' &&
+//     typeof(x.width) == 'number';
+// }));
 console.assert(typedef('Rectangle', (x) => {
-  return typeof(x) == 'object' &&
-    typeof(x.length) == 'number' &&
-    typeof(x.width) == 'number';
+  return typeis('object', x) &&
+    typeis('number', x.length) &&
+    typeis('number', x.width);
 }));
 
 /*
@@ -42,7 +47,7 @@ console.assert(typedef('Person', (p) => {
 
 let alice = {
   name: 'Alice',
-  age: 25,
+  age: 8,
   address: {},
 };
 
