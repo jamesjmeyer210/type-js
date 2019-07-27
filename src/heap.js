@@ -4,10 +4,21 @@ let _heap = undefined;
 // The private heap module
 const __HEAP__ = {
     def: (type, variable) => {
-
+        let block = _heap.get(type);
+        if(block !== undefined){
+            block.push(variable);
+            return variable;
+        }else{
+            return undefined;
+        }
     },
-    undef: (variable) => {
-
+    undef: (type, variable) => {
+        let block = _heap.get(type);
+        if(block !== undefined){
+            return block.remove(variable);
+        }else{
+            return undefined;
+        }
     },
 };
 
@@ -28,3 +39,5 @@ const Heap = {
         }
     }
 };
+
+export {Heap};
